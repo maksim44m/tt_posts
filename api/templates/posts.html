@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Посты - Блог{% endblock %}
+
+{% block body %}
+<div class="navbar">
+    <div class="navbar-content">
+        <div class="logo">Блог</div>
+        <div class="nav-links">
+            <a href="/api/v1/users/logout" class="btn btn-secondary">Выйти</a>
+        </div>
+    </div>
+</div>
+
+<div class="container posts-container">
+    <h1>Управление постами</h1>
+    
+    {% if request.query_params.get('success') %}
+    <div class="alert alert-success">{{ request.query_params.get('success') }}</div>
+    {% endif %}
+    
+    {% if request.query_params.get('error') %}
+    <div class="alert alert-error">{{ request.query_params.get('error') }}</div>
+    {% endif %}
+    
+    {% if posts %}
+        {% for post in posts %}
+        <div class="post-card">
+            <div class="post-title">{{ post.title }}</div>
+            <div class="post-date">{{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+            <div class="post-content">{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</div>
+            <div class="post-actions">
+                <a href="/api/v1/posts/{{ post.id }}/edit" class="btn">Редактировать</a>
+                <form method="post" action="/api/v1/posts/{{ post.id }}/delete" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Удалить пост?')">Удалить</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align: center; color: #6c757d; margin: 2rem 0;">Постов пока нет</p>
+    {% endif %}
+    
+    <a href="/api/v1/posts/new" class="add-btn btn">+</a>
+</div>
+{% endblock %} 

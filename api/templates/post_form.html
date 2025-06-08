@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{% if post %}Редактирование{% else %}Новый пост{% endif %} - Блог{% endblock %}
+
+{% block body %}
+<div class="navbar">
+    <div class="navbar-content">
+        <div class="logo">Блог</div>
+        <div class="nav-links">
+            <a href="/api/v1/posts" class="btn btn-secondary">К постам</a>
+            <a href="/api/v1/users/logout" class="btn btn-secondary">Выйти</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>{% if post %}Редактирование поста{% else %}Новый пост{% endif %}</h1>
+    
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+    
+    <form method="post" action="{% if post %}/api/v1/posts/{{ post.id }}/edit{% else %}/api/v1/posts/new{% endif %}">
+        <div class="form-group">
+            <label for="title">Заголовок:</label>
+            <input type="text" id="title" name="title" value="{% if post %}{{ post.title }}{% endif %}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="content">Содержание:</label>
+            <textarea id="content" name="content" required>{% if post %}{{ post.content }}{% endif %}</textarea>
+        </div>
+        
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit" class="btn">{% if post %}Сохранить{% else %}Создать{% endif %}</button>
+            <a href="/api/v1/posts" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %} 
