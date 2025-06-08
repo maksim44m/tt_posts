@@ -9,7 +9,7 @@ from aiogram.types import (Message,
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from db import DB
-from utils.log import logging
+from logs.log import logging
 
 
 logger = logging.getLogger(__name__)

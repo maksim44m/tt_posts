@@ -44,7 +44,7 @@ docker compose up -d
 
 5. Примените миграции базы данных:
 ```bash
-docker-compose exec api alembic upgrade head
+docker compose exec api alembic upgrade head
 ```
 
 После запуска:

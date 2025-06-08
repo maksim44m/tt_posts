@@ -1,6 +1,5 @@
 import uvicorn
 
-from api_v1.app import app
 import config
 
 if __name__ == "__main__":

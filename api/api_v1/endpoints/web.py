@@ -4,7 +4,7 @@ from fastapi.exceptions import HTTPException
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from api.schemas.post import PostCreate, PostUpdate
+from schemas.post import PostCreate, PostUpdate
 from api_v1.dependencies import get_db_session, get_post_service
 from services.posts import PostService
 

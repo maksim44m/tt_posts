@@ -12,6 +12,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копирование кода приложения
 COPY . .
 
+# Применение миграций
+RUN alembic upgrade head
+
 # Создание пользователя для безопасности
 RUN adduser --disabled-password --gecos '' appuser && chown -R appuser:appuser /app
 USER appuser
