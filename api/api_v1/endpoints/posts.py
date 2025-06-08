@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 # API endpoints для работы с постами
-@router.get('/api/', response_model=list[PostResponse])
+@router.get('/', response_model=list[PostResponse])
 async def get_posts_api(
     session: AsyncSession = Depends(get_db_session),
     post_service: PostService = Depends(get_post_service)
@@ -22,7 +22,7 @@ async def get_posts_api(
     return await post_service.get_posts(session)
 
 
-@router.get('/api/{post_id}', response_model=PostResponse)
+@router.get('/{post_id}', response_model=PostResponse)
 async def get_post_api(
     post_id: int,
     session: AsyncSession = Depends(get_db_session),
@@ -32,7 +32,7 @@ async def get_post_api(
     return await post_service.get_post(session, post_id)
 
 
-@router.post('/api/', response_model=PostResponse, status_code=201)
+@router.post('/', response_model=PostResponse, status_code=201)
 async def create_post_api(
     post_data: PostCreate,
     session: AsyncSession = Depends(get_db_session),
@@ -42,7 +42,7 @@ async def create_post_api(
     return await post_service.create_post(session, post_data)
 
 
-@router.put('/api/{post_id}', response_model=PostResponse)
+@router.put('/{post_id}', response_model=PostResponse)
 async def update_post_api(
     post_id: int,
     post_data: PostUpdate,
@@ -53,7 +53,7 @@ async def update_post_api(
     return await post_service.patch_post(session, post_id, post_data)
 
 
-@router.patch('/api/{post_id}', response_model=PostResponse)
+@router.patch('/{post_id}', response_model=PostResponse)
 async def patch_post_api(
     post_id: int,
     post_data: PostUpdate,
@@ -64,7 +64,7 @@ async def patch_post_api(
     return await post_service.patch_post(session, post_id, post_data)
 
 
-@router.delete('/api/{post_id}', status_code=204)
+@router.delete('/{post_id}', status_code=204)
 async def delete_post_api(
     post_id: int,
     session: AsyncSession = Depends(get_db_session),
