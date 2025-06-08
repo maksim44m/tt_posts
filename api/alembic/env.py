@@ -1,13 +1,9 @@
 from logging.config import fileConfig
 import os
-from dotenv import load_dotenv
 
 from sqlalchemy import create_engine, engine_from_config
 from sqlalchemy import pool
 from alembic import context
-
-# Загрузка переменных окружения из .env файла
-load_dotenv()
 
 from db.models import Base
 from config import DB_URL
