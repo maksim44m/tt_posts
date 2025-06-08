@@ -6,13 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_env_var(name: str, default: Optional[str] = None) -> str:
-    """Получение переменной окружения с проверкой"""
-    value = os.getenv(name, default)
-    if value is None or value.strip() == '':
-        raise ValueError(f'Переменная окружения {name} не установлена')
-    return value
 
-
-DB_URL: str = get_env_var('DB_URL')
-TG_TOKEN: str = get_env_var('TG_TOKEN')
+DB_URL: str = os.getenv('DB_URL')
+TG_TOKEN: str = os.getenv('TG_TOKEN')
