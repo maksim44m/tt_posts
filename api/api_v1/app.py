@@ -43,8 +43,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Редирект с корневого URL
 @app.get("/")
 async def root():
-    """Редирект на страницу логина"""
-    return RedirectResponse(url="/api/v1/users/login", status_code=302)
+    """Редирект на страницу с постами"""
+    return RedirectResponse(url="/api/v1/web", status_code=302)
 
 # API роуты
 app.include_router(routers, prefix="/api/v1")

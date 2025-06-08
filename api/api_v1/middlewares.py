@@ -74,7 +74,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if not bearer_token or not bearer_token.startswith("Bearer "):
             # Для веб-страниц перенаправляем на логин
             if request.headers.get("accept", "").startswith("text/html"):
-                return RedirectResponse(url="/login", status_code=302)
+                return RedirectResponse(url="/api/v1/users/login", status_code=302)
             raise HTTPException(status_code=401, 
                                 detail="Missing or invalid token")
 
@@ -83,7 +83,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if not user:
             # Для веб-страниц перенаправляем на регистрацию
             if request.headers.get("accept", "").startswith("text/html"):
-                return RedirectResponse(url="/register", status_code=302)
+                return RedirectResponse(url="/api/v1/users/register", status_code=302)
             raise HTTPException(status_code=401, detail="Unauthorized")
 
         request.state.user = user

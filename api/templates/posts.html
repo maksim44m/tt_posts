@@ -30,8 +30,8 @@
             <div class="post-date">{{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
             <div class="post-content">{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</div>
             <div class="post-actions">
-                <a href="/api/v1/posts/{{ post.id }}/edit" class="btn">Редактировать</a>
-                <form method="post" action="/api/v1/posts/{{ post.id }}/delete" style="display: inline;">
+                <a href="/api/v1/web/{{ post.id }}/edit" class="btn">Редактировать</a>
+                <form method="post" action="/api/v1/web/{{ post.id }}/delete" style="display: inline;">
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Удалить пост?')">Удалить</button>
                 </form>
             </div>
@@ -41,6 +41,6 @@
         <p style="text-align: center; color: #6c757d; margin: 2rem 0;">Постов пока нет</p>
     {% endif %}
     
-    <a href="/api/v1/posts/new" class="add-btn btn">+</a>
+    <a href="/api/v1/web/new" class="add-btn btn">+</a>
 </div>
 {% endblock %} 

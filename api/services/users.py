@@ -46,7 +46,7 @@ class UserService:
     
     async def _access_response(self,
                               access_token: str) -> RedirectResponse:
-        response = RedirectResponse(url='/api/v1/posts', status_code=302)
+        response = RedirectResponse(url='/api/v1/web', status_code=302)
         response.set_cookie(
             key="Authorization",
             value=f"Bearer {access_token}",

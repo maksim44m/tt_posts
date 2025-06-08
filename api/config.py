@@ -12,8 +12,6 @@ PUBLIC_PATHS = [
     "/",
     "/api/v1/users/login",
     "/api/v1/users/register", 
-    "/api/v1/posts/",
-    "/api/v1/posts",
     "/docs",
     "/redoc",
     "/openapi.json",

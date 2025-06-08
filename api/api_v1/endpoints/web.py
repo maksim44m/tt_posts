@@ -48,7 +48,7 @@ async def create_web_post(
         post_data = PostCreate(title=title, content=content)
         await post_service.create_post(session, post_data)
         response = RedirectResponse(
-            url="/api/v1/posts?success=Пост успешно создан", 
+            url="/api/v1/web?success=Пост успешно создан", 
             status_code=302
         )
         return response
@@ -78,7 +78,7 @@ async def edit_post_page(
         )
     except HTTPException as e:
         return RedirectResponse(
-            url=f"/api/v1/posts?error={e.detail}", 
+            url=f"/api/v1/web?error={e.detail}", 
             status_code=302
         )
 
@@ -97,13 +97,13 @@ async def update_web_post(
         post_data = PostUpdate(title=title, content=content)
         await post_service.patch_post(session, post_id, post_data)
         response = RedirectResponse(
-            url="/api/v1/posts?success=Пост успешно обновлен", 
+            url="/api/v1/web?success=Пост успешно обновлен", 
             status_code=302
         )
         return response
     except HTTPException as e:
         return RedirectResponse(
-            url=f"/api/v1/posts?error={e.detail}", 
+            url=f"/api/v1/web?error={e.detail}", 
             status_code=302
         )
     except Exception as e:
@@ -128,11 +128,11 @@ async def delete_web_post(
     try:
         await post_service.delete_post(session, post_id)
         return RedirectResponse(
-            url="/api/v1/posts?success=Пост успешно удален", 
+            url="/api/v1/web?success=Пост успешно удален", 
             status_code=302
         )
     except HTTPException as e:
         return RedirectResponse(
-            url=f"/api/v1/posts?error={e.detail}", 
+            url=f"/api/v1/web?error={e.detail}", 
             status_code=302
         )
