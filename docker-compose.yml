@@ -20,8 +20,6 @@ services:
     build: 
       context: ./api
       dockerfile: Dockerfile
-    env_file:
-      - .env
     environment:
       - DB_URL=${DB_URL}
       - SECRET_KEY=${SECRET_KEY}
@@ -39,8 +37,6 @@ services:
     build:
       context: ./bot
       dockerfile: Dockerfile
-    env_file:
-      - .env
     environment:
       - DB_URL=${DB_URL}
       - TG_TOKEN=${TG_TOKEN}
