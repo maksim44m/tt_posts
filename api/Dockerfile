@@ -1,5 +1,12 @@
 FROM python:3.11-slim
 
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    netcat-openbsd \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Создание рабочей директории
 WORKDIR /app
 
