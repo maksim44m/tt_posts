@@ -43,8 +43,8 @@ docker compose up -d
 ```
 
 После запуска:
-- API будет доступно по адресу: http://localhost:8002
-- Документация API: http://localhost:8002/docs
+- API будет доступно по адресу: http://localhost:8080
+- Документация API: http://localhost:8080/docs
 - Telegram-бот будет готов к работе
 
 ## Структура проекта
