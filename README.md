@@ -42,11 +42,6 @@ cp env.example .env
 docker compose up -d
 ```
 
-5. Примените миграции базы данных:
-```bash
-docker compose exec api alembic upgrade head
-```
-
 После запуска:
 - API будет доступно по адресу: http://localhost:8002
 - Документация API: http://localhost:8002/docs
