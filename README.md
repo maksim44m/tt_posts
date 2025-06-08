@@ -39,7 +39,7 @@ cp env.example .env
 
 4. Запустите все сервисы:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 5. Примените миграции базы данных:
